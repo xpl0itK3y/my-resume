@@ -8,7 +8,7 @@ import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
 import Education from './components/sections/Education';
-import resumeData from './data/resumeData';
+import translations from './data/translations';
 import './styles/animations.css';
 
 function App() {
@@ -29,6 +29,9 @@ function App() {
     console.log('Язык изменен на:', lang);
   };
 
+  // Получаем текущие переводы
+  const t = translations[currentLang];
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -39,7 +42,11 @@ function App() {
       <AnimatedBackground />
       
       {/* Верхняя панель с переключателем языка */}
-      <TopBar currentLang={currentLang} onLanguageChange={handleLanguageChange} />
+      <TopBar 
+        currentLang={currentLang} 
+        onLanguageChange={handleLanguageChange}
+        translations={t}
+      />
       
       {/* Основной контент */}
       <div style={{ 
@@ -47,7 +54,7 @@ function App() {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
           {/* Первый блок - на всю ширину */}
-          <Header name={resumeData.name} title={resumeData.title} />
+          <Header name={t.name} title={t.title} />
           
           {/* Остальные блоки в два столбца / один столбец на мобильных */}
           <div style={{ 
@@ -58,26 +65,54 @@ function App() {
             {/* Левая колонка */}
             <div style={{ animation: 'fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both' }}>
               <div style={{ animation: 'slideIn 0.6s ease-out 0.3s both' }}>
-                <About about={resumeData.about} />
+                <About 
+                  title={t.aboutTitle}
+                  about={t.aboutText}
+                />
               </div>
               <div style={{ animation: 'slideIn 0.6s ease-out 0.5s both' }}>
-                <Experience experience={resumeData.experience} />
+                <Experience 
+                  title={t.experienceTitle}
+                  experience={t.experiences}
+                />
               </div>
               <div style={{ animation: 'slideIn 0.6s ease-out 0.7s both' }}>
-                <Education education={resumeData.education} />
+                <Education 
+                  title={t.educationTitle}
+                  education={t.education}
+                />
               </div>
             </div>
             
             {/* Правая колонка */}
             <div style={{ animation: 'fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both' }}>
               <div style={{ animation: 'slideIn 0.6s ease-out 0.4s both' }}>
-                <Contacts contacts={resumeData.contacts} />
+                <Contacts 
+                  title={t.contactsTitle}
+                  contacts={{
+                    email: t.email,
+                    phone: t.phone,
+                    location: t.location,
+                    github: t.github,
+                    telegram: t.telegram
+                  }}
+                />
               </div>
               <div style={{ animation: 'slideIn 0.6s ease-out 0.6s both' }}>
-                <Skills skills={resumeData.skills} />
+                <Skills 
+                  skillsTitle={t.skillsTitle}
+                  softSkillsTitle={t.softSkillsTitle}
+                  skills={{
+                    technical: t.technicalSkills,
+                    soft: t.softSkills
+                  }}
+                />
               </div>
               <div style={{ animation: 'slideIn 0.6s ease-out 0.8s both' }}>
-                <Projects projects={resumeData.projects} />
+                <Projects 
+                  title={t.projectsTitle}
+                  projects={t.projects}
+                />
               </div>
             </div>
           </div>

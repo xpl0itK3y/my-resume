@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GlassBlock from '../GlassBlock';
 
+const Projects = ({ title, projects }) => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-const Projects = ({ projects }) => {
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <GlassBlock delay={0.5}>
-            <h2 style={{ color: '#fff', marginTop: '0', fontSize: '1.5rem', marginBottom: '1.5rem' }}>
-            🎨 Проекты
+            <h2 style={{ 
+                color: '#fff', 
+                marginTop: '0', 
+                fontSize: isMobile ? '1.3rem' : '1.5rem',
+                marginBottom: '1.5rem' 
+            }}>
+                {title}
             </h2>
             {projects.map((project, index) => (
                 <div key={index} style={{ 
@@ -14,12 +29,16 @@ const Projects = ({ projects }) => {
                     paddingBottom: index < projects.length - 1 ? '1.5rem' : '0',
                     borderBottom: index < projects.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
                 }}>
-                    <h3 style={{ color: '#fff', margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>
+                    <h3 style={{ 
+                        color: '#fff', 
+                        margin: '0 0 0.5rem 0', 
+                        fontSize: isMobile ? '1rem' : '1.1rem'
+                    }}>
                         {project.name}
                     </h3>
                     <div style={{ 
                         color: 'rgba(255, 255, 255, 0.7)',
-                        fontSize: '0.85rem',
+                        fontSize: isMobile ? '0.8rem' : '0.85rem',
                         marginBottom: '0.5rem'
                     }}>
                         {project.tech}
@@ -27,7 +46,8 @@ const Projects = ({ projects }) => {
                     <p style={{ 
                         color: 'rgba(255, 255, 255, 0.85)',
                         lineHeight: '1.6',
-                        margin: '0'
+                        margin: '0',
+                        fontSize: isMobile ? '0.95rem' : '1rem'
                     }}>
                         {project.description}
                     </p>
@@ -37,5 +57,4 @@ const Projects = ({ projects }) => {
     );
 };
   
-  export default Projects;
-
+export default Projects;

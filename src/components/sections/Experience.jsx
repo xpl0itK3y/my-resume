@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import GlassBlock from '../GlassBlock';
 
-const Experience = ({ experience }) => {
+const Experience = ({ title, experience }) => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <GlassBlock delay={0.3}>
-            <h2 style={{ color: '#fff', marginTop: '0', fontSize: '1.5rem', marginBottom: '1.5rem' }}>
-                💼 Опыт работы
+            <h2 style={{ 
+                color: '#fff', 
+                marginTop: '0', 
+                fontSize: isMobile ? '1.3rem' : '1.5rem',
+                marginBottom: '1.5rem' 
+            }}>
+                {title}
             </h2>
             {experience.map((job, index) => (
                 <div key={index} style={{ 
@@ -16,13 +32,13 @@ const Experience = ({ experience }) => {
                 <h3 style={{ 
                     color: '#fff', 
                     margin: '0 0 0.5rem 0',
-                    fontSize: '1.2rem'
+                    fontSize: isMobile ? '1.1rem' : '1.2rem'
                 }}>
                     {job.position}
                 </h3>
                 <div style={{ 
                     color: 'rgba(255, 255, 255, 0.7)',
-                    fontSize: '0.95rem',
+                    fontSize: isMobile ? '0.9rem' : '0.95rem',
                     marginBottom: '0.5rem'
                 }}>
                     {job.company} • {job.period}
@@ -30,7 +46,8 @@ const Experience = ({ experience }) => {
                 <p style={{ 
                     color: 'rgba(255, 255, 255, 0.85)',
                     lineHeight: '1.6',
-                    margin: '0'
+                    margin: '0',
+                    fontSize: isMobile ? '0.95rem' : '1rem'
                 }}>
                     {job.description}
                 </p>

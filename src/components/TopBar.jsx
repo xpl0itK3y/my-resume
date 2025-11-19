@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 
-const TopBar = ({ currentLang, onLanguageChange }) => {
+const TopBar = ({ currentLang, onLanguageChange, translations }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -81,7 +81,7 @@ const TopBar = ({ currentLang, onLanguageChange }) => {
                             fontSize: isMobile ? '1.5rem' : '2rem',
                             filter: 'drop-shadow(0 0 10px rgba(102, 126, 234, 0.5))'
                         }}>✨</span>
-                        {!isMobile && 'Portfolio'}
+                        {!isMobile && translations.portfolio}
                     </div>
 
                     {/* Переключатель языка справа */}
