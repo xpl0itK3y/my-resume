@@ -5,11 +5,11 @@ const translations = {
         
         // Header
         name: "Иван Петров",
-        title: "Frontend Developer",
+        title: "Fullstack Developer",
         
         // About
         aboutTitle: "👤 О себе",
-        aboutText: "Passionate frontend developer с 3+ годами опыта в создании современных веб-приложений. Специализируюсь на React, TypeScript и современных CSS-фреймворках. Люблю создавать красивые и функциональные интерфейсы.",
+        aboutText: "Fullstack-разработчик с опытом разработки комплексных веб-приложений и AI-powered решений. Начинал карьеру с frontend-разработки, углубился в backend-технологии, сейчас специализируюсь на fullstack-разработке с акцентом на создание масштабируемых приложений. Владею широким стеком технологий: JavaScript/TypeScript (React, Node.js), Python (FastAPI), Go, PHP, а также опытом работы с Docker, базами данных и интеграцией AI-сервисов. Разрабатывал чат-боты, системы автоматизации и веб-приложения с интеграцией языковых моделей. Имею опыт оптимизации производительности, работы с многопоточностью и построения CI/CD пайплайнов.",
         
         // Contacts
         contactsTitle: "📬 Контакты",
@@ -80,11 +80,11 @@ const translations = {
         
         // Header
         name: "Ivan Petrov",
-        title: "Frontend Developer",
+        title: "Fullstack Developer",
         
         // About
         aboutTitle: "👤 About Me",
-        aboutText: "Passionate frontend developer with 3+ years of experience in creating modern web applications. I specialize in React, TypeScript and modern CSS frameworks. I love creating beautiful and functional interfaces.",
+        aboutText: "Full-stack developer with experience in developing complex web applications and AI-powered solutions. I started my career in front-end development, delved into back-end technologies, and now specialize in full-stack development with a focus on creating scalable applications. I have a broad technology stack: JavaScript/TypeScript (React, Node.js), Python (FastAPI), Go, PHP, as well as experience with Docker, databases, and AI service integration. I have developed chatbots, automation systems, and web applications with language model integration. I have experience in performance optimization, multithreading, and building CI/CD pipelines.",
         
         // Contacts
         contactsTitle: "📬 Contacts",
