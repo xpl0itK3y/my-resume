@@ -9,7 +9,7 @@ const resumeData = {
     contacts: {
         email: "ivan.petrov@example.com",
         phone: "+7 (999) 123-45-67",
-        location: "Москва, Россия",
+        location: "Казахстан, Павлодар",
         github: "github.com/ivanpetrov",
         telegram: "@ivanpetrov"
     },

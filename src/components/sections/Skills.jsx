@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import GlassBlock from "../GlassBlock";
-import Skill from '../Skill';
 
 const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -24,10 +23,56 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
             }}>
                 {skillsTitle}
             </h2>
-            {skills.technical.map((skill, index) => (
-                <Skill key={index} name={skill.name} level={skill.level} />
-            ))}
             
+            {/* Технические навыки с логотипами */}
+            <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: isMobile ? '0.85rem' : '1.2rem',
+                marginBottom: '2.5rem'
+            }}>
+                {skills.technical.map((skill, index) => (
+                    <div 
+                        key={index} 
+                        title={skill.name}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer',
+                            width: isMobile ? '48px' : '56px',
+                            height: isMobile ? '48px' : '56px'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-5px) scale(1.1)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                        }}
+                    >
+                        {getSkillIcon(skill.name) ? (
+                            <img 
+                                src={getSkillIcon(skill.name)} 
+                                alt={skill.name}
+                                style={{ 
+                                    width: '100%', 
+                                    height: '100%', 
+                                    objectFit: 'contain'
+                                }}
+                                onError={(e) => {
+                                    e.target.style.display = 'none';
+                                    e.target.parentElement.innerHTML = '<span style="font-size: 36px">💻</span>';
+                                }}
+                            />
+                        ) : (
+                            <span style={{ fontSize: '36px' }}>💻</span>
+                        )}
+                    </div>
+                ))}
+            </div>
+            
+            {/* Soft Skills */}
             <h3 style={{ 
                 color: '#fff', 
                 marginTop: '2rem', 
@@ -47,8 +92,7 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
                     padding: isMobile ? '0.4rem 0.8rem' : '0.5rem 1rem',
                     borderRadius: '20px',
                     color: '#fff',
-                    fontSize: isMobile ? '0.85rem' : '0.9rem',
-                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                    fontSize: isMobile ? '0.85rem' : '0.9rem'
                 }}>
                     {skill}
                 </span>
@@ -56,6 +100,71 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
             </div>
         </GlassBlock>
     );
+    
+    function getSkillIcon(skillName) {
+        const name = skillName.toLowerCase().replace(/\s+/g, '').replace(/\//g, '');
+        
+        const iconMap = {
+            'reactnext.js': 'react',
+            'react/next.js': 'react',
+            'react': 'react',
+            'nextjs': 'nextjs',
+            'next.js': 'nextjs',
+            'typescript': 'typescript',
+            'javascript': 'javascript',
+            'vue.js': 'vuejs',
+            'vuejs': 'vuejs',
+            'vue': 'vuejs',
+            'html5': 'html5',
+            'csstailwind': 'css3',
+            'css/tailwind': 'css3',
+            'css': 'css3',
+            'tailwind': 'tailwindcss',
+            'tailwindcss': 'tailwindcss',
+            'node.js': 'nodejs',
+            'nodejs': 'nodejs',
+            'python': 'python',
+            'fastapi': 'fastapi',
+            'django': 'django',
+            'pandas': 'pandas',
+            'php': 'php',
+            'laravel': 'laravel',
+            'symfony': 'symfony',
+            'go': 'go',
+            'aiogram': 'python',
+            'telethon': 'python',
+            'telegrambotapi': 'python',
+            'postgresql': 'postgresql',
+            'mongodb': 'mongodb',
+            'redis': 'redis',
+            'mysql': 'mysql',
+            'docker': 'docker',
+            'kubernetes': 'kubernetes',
+            'git': 'git',
+            'gitlab': 'gitlab',
+            'nginx': 'nginx',
+            'linux': 'linux',
+            'jest': 'jest',
+            'githubactions': 'githubactions',
+            'pytest': 'pytest',
+            'sqlite': 'sqlite'
+        };
+        
+        const iconFolder = iconMap[name] || name;
+        
+        const specialCases = {
+            'django': ['plain', 'original', 'line'],
+            'nginx': ['original', 'plain', 'line'],
+            'githubactions': ['original', 'plain', 'line'],
+            'jest': ['plain', 'original', 'line'],
+        };
+        
+        const fileVariants = specialCases[iconFolder] || ['original', 'plain', 'line'];
+        const baseUrl = import.meta.env.BASE_URL || '/';
+        const iconPath = `${baseUrl}icons/${iconFolder}/${iconFolder}-${fileVariants[0]}.svg`;
+        
+        return iconPath;
+    }
 };
 
 export default Skills;

@@ -66,22 +66,27 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
                 }}>
                     {/* Логотип/название слева */}
                     <div style={{
-                        color: '#fff',
-                        fontSize: isMobile ? '1.2rem' : '1.5rem',
+                        fontSize: isMobile ? '1.2rem' : '2rem',
                         fontWeight: '700',
                         letterSpacing: '-0.5px',
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.5rem'
                     }}>
                         <span style={{
-                            fontSize: isMobile ? '1.5rem' : '2rem',
-                            filter: 'drop-shadow(0 0 10px rgba(102, 126, 234, 0.5))'
-                        }}>✨</span>
-                        {!isMobile && translations.portfolio}
+                            fontSize: isMobile ? '2rem' : '2.5rem',
+                            background: 'linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                        }}></span>
+                        {!isMobile && <span style={{
+                            color: '#ffffff',
+                            textShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+                            background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent'
+                        }}>{translations.portfolio}</span>}
                     </div>
 
                     {/* Переключатель языка справа */}

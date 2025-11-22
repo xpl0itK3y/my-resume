@@ -15,7 +15,7 @@ const translations = {
         contactsTitle: "📬 Контакты",
         email: "ivan.petrov@example.com",
         phone: "+7 (999) 123-45-67",
-        location: "Москва, Россия",
+        location: "Казахстан, Павлодар",
         github: "github.com/ivanpetrov",
         telegram: "@ivanpetrov",
         
@@ -50,11 +50,43 @@ const translations = {
         skillsTitle: "🚀 Технические навыки",
         softSkillsTitle: "💡 Soft Skills",
         technicalSkills: [
+            // Frontend
             { name: "React / Next.js", level: 90 },
             { name: "TypeScript", level: 85 },
+            { name: "JavaScript", level: 90 },
+            { name: "Vue.js", level: 80 },
+            { name: "HTML5", level: 95 },
             { name: "CSS / Tailwind", level: 88 },
-            { name: "Node.js", level: 75 },
-            { name: "Git", level: 85 }
+            
+            // Backend
+            { name: "Node.js", level: 85 },
+            { name: "Python", level: 80 },
+            { name: "FastAPI", level: 80 },
+            { name: "Django", level: 75 },
+            { name: "Pandas", level: 75 },
+            { name: "PHP", level: 75 },
+            { name: "Laravel", level: 75 },
+            { name: "Symfony", level: 70 },
+            { name: "Go", level: 70 },
+            
+            // Databases
+            { name: "PostgreSQL", level: 85 },
+            { name: "MongoDB", level: 80 },
+            { name: "Redis", level: 75 },
+            { name: "MySQL", level: 80 },
+            { name: "Sqlite", level: 80 },
+            
+            // DevOps & Tools
+            { name: "Docker", level: 85 },
+            { name: "Kubernetes", level: 75 },
+            { name: "Git", level: 90 },
+            { name: "Nginx", level: 80 },
+            { name: "Linux", level: 85 },
+            
+            // Testing & CI/CD
+            { name: "Jest", level: 80 },
+            { name: "GitHub Actions", level: 75 },
+            { name: "Pytest", level: 75 },
         ],
         softSkills: ["Командная работа", "Agile/Scrum", "Английский (B2)", "Креативность"],
         
@@ -90,7 +122,7 @@ const translations = {
         contactsTitle: "📬 Contacts",
         email: "ivan.petrov@example.com",
         phone: "+7 (999) 123-45-67",
-        location: "Moscow, Russia",
+        location: "Kazakhstan, Pavlodar",
         github: "github.com/ivanpetrov",
         telegram: "@ivanpetrov",
         
@@ -125,11 +157,44 @@ const translations = {
         skillsTitle: "🚀 Technical Skills",
         softSkillsTitle: "💡 Soft Skills",
         technicalSkills: [
+            // Frontend
             { name: "React / Next.js", level: 90 },
             { name: "TypeScript", level: 85 },
+            { name: "JavaScript", level: 90 },
+            { name: "Vue.js", level: 80 },
+            { name: "HTML5", level: 95 },
             { name: "CSS / Tailwind", level: 88 },
-            { name: "Node.js", level: 75 },
-            { name: "Git", level: 85 }
+            
+            // Backend
+            { name: "Node.js", level: 85 },
+            { name: "Python", level: 80 },
+            { name: "FastAPI", level: 80 },
+            { name: "Django", level: 75 },
+            { name: "Pandas", level: 75 },
+            { name: "PHP", level: 75 },
+            { name: "Laravel", level: 75 },
+            { name: "Symfony", level: 70 },
+            { name: "Go", level: 70 },
+        
+            
+            // Databases
+            { name: "PostgreSQL", level: 85 },
+            { name: "MongoDB", level: 80 },
+            { name: "Redis", level: 75 },
+            { name: "MySQL", level: 80 },
+            { name: "Sqlite", level: 80 },
+            
+            // DevOps & Tools
+            { name: "Docker", level: 85 },
+            { name: "Kubernetes", level: 75 },
+            { name: "Git", level: 90 },
+            { name: "Nginx", level: 80 },
+            { name: "Linux", level: 85 },
+            
+            // Testing & CI/CD
+            { name: "Jest", level: 80 },
+            { name: "GitHub Actions", level: 75 },
+            { name: "Pytest", level: 75 },
         ],
         softSkills: ["Teamwork", "Agile/Scrum", "English (B2)", "Creativity"],
         

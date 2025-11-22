@@ -27,7 +27,8 @@ const About = ({ title, about }) => {
                 color: 'rgba(255, 255, 255, 0.9)', 
                 lineHeight: '1.8',
                 fontSize: isMobile ? '0.95rem' : '1.05rem',
-                margin: '0'
+                margin: '0',
+                textAlign: 'justify'
             }}>
                 {about}
             </p>
