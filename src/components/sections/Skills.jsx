@@ -92,7 +92,8 @@ const Skills = ({ skillsTitle, softSkillsTitle, skills }) => {
                     padding: isMobile ? '0.4rem 0.8rem' : '0.5rem 1rem',
                     borderRadius: '20px',
                     color: '#fff',
-                    fontSize: isMobile ? '0.85rem' : '0.9rem'
+                    fontSize: isMobile ? '0.85rem' : '0.9rem',
+                    cursor: 'default'
                 }}>
                     {skill}
                 </span>

@@ -13,21 +13,34 @@ const Experience = ({ title, experience }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // Функция для разбивки текста на предложения
+    const splitIntoSentences = (text) => {
+        // Разбиваем по точкам, но сохраняем точку в конце каждого предложения
+        return text
+            .split('.')
+            .map(sentence => sentence.trim())
+            .filter(sentence => sentence.length > 0)
+            .map(sentence => sentence + '.');
+    };
+
     return (
         <GlassBlock delay={0.3}>
-            <h2 style={{ 
-                color: '#fff', 
-                marginTop: '0', 
-                fontSize: isMobile ? '1.3rem' : '1.5rem',
-                marginBottom: '1.5rem' 
-            }}>
-                {title}
-            </h2>
+            {title && (
+                <h2 style={{ 
+                    color: '#fff', 
+                    marginTop: '0', 
+                    fontSize: isMobile ? '1.3rem' : '1.5rem',
+                    marginBottom: '0',
+                    marginBottom: isMobile ? '1rem' : '1.5rem'
+                }}>
+                    {title}
+                </h2>
+            )}
             {experience.map((job, index) => (
                 <div key={index} style={{ 
-                    marginBottom: index < experience.length - 1 ? '2.5rem' : '0',
-                    paddingBottom: index < experience.length - 1 ? '2.5rem' : '0',
-                    borderBottom: index < experience.length - 1 ? '3px solid rgba(102, 126, 234, 0.4)' : 'none',
+                    marginBottom: '0',
+                    paddingBottom: '0',
+                    borderBottom: 'none',
                     position: 'relative',
                     paddingLeft: '1.5rem'
                 }}>
@@ -36,7 +49,7 @@ const Experience = ({ title, experience }) => {
                         position: 'absolute',
                         left: '0',
                         top: '0',
-                        bottom: index < experience.length - 1 ? '2.5rem' : '0',
+                        bottom: '0',
                         width: '4px',
                         background: 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)',
                         borderRadius: '2px',
@@ -73,7 +86,8 @@ const Experience = ({ title, experience }) => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.75rem',
-                        flexWrap: 'wrap'
+                        flexWrap: 'wrap',
+                        cursor: 'default'
                     }}>
                         <span style={{ 
                             fontWeight: '600',
@@ -100,16 +114,49 @@ const Experience = ({ title, experience }) => {
                         </span>
                     </div>
                     
-                    <p style={{ 
+                    {/* Описание с разбивкой на предложения */}
+                    <div style={{ 
                         color: 'rgba(255, 255, 255, 0.9)',
                         lineHeight: '1.7',
-                        margin: '0',
+                        margin: '0 0 1rem 0',
                         fontSize: isMobile ? '0.95rem' : '1rem',
                         paddingLeft: '0.5rem',
                         borderLeft: '2px solid rgba(102, 126, 234, 0.2)'
                     }}>
-                        {job.description}
-                    </p>
+                        {splitIntoSentences(job.description).map((sentence, sentenceIndex) => (
+                            <div key={sentenceIndex} style={{ marginBottom: '0.5rem' }}>
+                                {sentence}
+                            </div>
+                        ))}
+                    </div>
+                    
+                    {/* Технологии */}
+                    {job.technologies && job.technologies.length > 0 && (
+                        <div style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: '0.5rem',
+                            marginTop: '1rem'
+                        }}>
+                            {job.technologies.map((tech, techIndex) => (
+                                <span 
+                                    key={techIndex}
+                                    style={{
+                                        background: 'transparent',
+                                        border: '1px solid rgba(102, 126, 234, 0.5)',
+                                        padding: isMobile ? '0.3rem 0.6rem' : '0.4rem 0.75rem',
+                                        borderRadius: '8px',
+                                        color: 'rgba(255, 255, 255, 0.9)',
+                                        fontSize: isMobile ? '0.8rem' : '0.85rem',
+                                        fontWeight: '500',
+                                        cursor: 'default'
+                                    }}
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                    )}
                 </div>
             ))}
         </GlassBlock>

@@ -25,10 +25,10 @@ const Contacts = ({ title, contacts }) => {
             </h2>
             <div style={{ 
                 display: 'grid', 
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '1rem',
+                gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(180px, 1fr))',
+                gap: '0.8rem',
                 color: 'rgba(255, 255, 255, 0.9)',
-                fontSize: isMobile ? '0.9rem' : '0.95rem'
+                fontSize: isMobile ? '0.85rem' : '0.9rem'
             }}>
                 <a href={`mailto:${contacts.email}`} style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import AnimatedBackground from './components/AnimatedBackground';
 import TopBar from './components/TopBar';
 import Header from './components/sections/Header';
@@ -16,21 +16,35 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
+    let timeoutId;
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(window.innerWidth <= 768);
+      }, 150);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const handleLanguageChange = (lang) => {
     setCurrentLang(lang);
-    console.log('Язык изменен на:', lang);
   };
 
-  // Получаем текущие переводы
-  const t = translations[currentLang];
+  // Мемоизируем переводы
+  const t = useMemo(() => translations[currentLang], [currentLang]);
+
+  // Разделяем experience на части
+  const firstExperiences = t.experiences.slice(0, 1);
+  const remainingExperiences = t.experiences.slice(1);
+  
+  const midPoint = Math.ceil(remainingExperiences.length / 2);
+  const leftColumnJobs = remainingExperiences.slice(0, midPoint);
+  const rightColumnJobs = remainingExperiences.slice(midPoint);
 
   return (
     <div style={{
@@ -41,80 +55,179 @@ function App() {
     }}>
       <AnimatedBackground />
       
-      {/* Верхняя панель с переключателем языка */}
       <TopBar 
         currentLang={currentLang} 
         onLanguageChange={handleLanguageChange}
         translations={t}
       />
       
-      {/* Основной контент */}
       <div style={{ 
         padding: isMobile ? '8rem 1rem 2rem 1rem' : '10rem 1.5rem 3rem 1.5rem'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
-          {/* Первый блок - на всю ширину */}
           <Header name={t.name} title={t.title} />
           
-          {/* Остальные блоки в два столбца / один столбец на мобильных */}
+          {/* Основная сетка */}
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-            gap: isMobile ? '1.5rem' : '2rem',
+            gap: isMobile ? '1.25rem' : '1.5rem',
+            alignItems: 'start'
           }}>
-            {/* Левая колонка */}
-            <div style={{ animation: 'fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both' }}>
-              <div style={{ animation: 'slideIn 0.6s ease-out 0.3s both' }}>
-                <About 
-                  title={t.aboutTitle}
-                  about={t.aboutText}
-                />
+            {/* Левая колонка - ДЕСКТОП */}
+            {!isMobile && (
+              <div style={{ 
+                animation: 'fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem'
+              }}>
+                <div style={{ animation: 'slideIn 0.6s ease-out 0.2s both' }}>
+                  <About 
+                    title={t.aboutTitle}
+                    about={t.aboutText}
+                  />
+                </div>
+                
+                <div style={{ animation: 'slideIn 0.6s ease-out 0.5s both' }}>
+                  <Experience 
+                    title={t.experienceTitle}
+                    experience={firstExperiences}
+                  />
+                </div>
+
+                {leftColumnJobs.map((job, index) => (
+                  <div key={`left-${index}`} style={{ 
+                    animation: `fadeInUp 0.6s ease-out ${0.8 + index * 0.1}s both`
+                  }}>
+                    <Experience 
+                      title=""
+                      experience={[job]}
+                    />
+                  </div>
+                ))}
               </div>
-              <div style={{ animation: 'slideIn 0.6s ease-out 0.5s both' }}>
-                <Experience 
-                  title={t.experienceTitle}
-                  experience={t.experiences}
-                />
-              </div>
-              <div style={{ animation: 'slideIn 0.6s ease-out 0.7s both' }}>
-                <Education 
-                  title={t.educationTitle}
-                  education={t.education}
-                />
-              </div>
-            </div>
+            )}
             
-            {/* Правая колонка */}
-            <div style={{ animation: 'fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both' }}>
-              <div style={{ animation: 'slideIn 0.6s ease-out 0.4s both' }}>
-                <Contacts 
-                  title={t.contactsTitle}
-                  contacts={{
-                    email: t.email,
-                    phone: t.phone,
-                    location: t.location,
-                    github: t.github,
-                    telegram: t.telegram
-                  }}
-                />
+            {/* Правая колонка - ДЕСКТОП */}
+            {!isMobile && (
+              <div style={{ 
+                animation: 'fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem'
+              }}>
+                <div style={{ animation: 'slideIn 0.6s ease-out 0.4s both' }}>
+                  <Contacts 
+                    title={t.contactsTitle}
+                    contacts={{
+                      email: t.email,
+                      phone: t.phone,
+                      location: t.location,
+                      github: t.github,
+                      telegram: t.telegram
+                    }}
+                  />
+                </div>
+                
+                <div style={{ animation: 'slideIn 0.6s ease-out 0.6s both' }}>
+                  <Skills 
+                    skillsTitle={t.skillsTitle}
+                    softSkillsTitle={t.softSkillsTitle}
+                    skills={{
+                      technical: t.technicalSkills,
+                      soft: t.softSkills
+                    }}
+                  />
+                </div>
+
+                <div style={{ animation: 'slideIn 0.6s ease-out 0.7s both' }}>
+                  <Education 
+                    title={t.educationTitle}
+                    education={t.education}
+                  />
+                </div>
+
+                {rightColumnJobs.map((job, index) => (
+                  <div key={`right-${index}`} style={{ 
+                    animation: `fadeInUp 0.6s ease-out ${0.8 + index * 0.1}s both`
+                  }}>
+                    <Experience 
+                      title=""
+                      experience={[job]}
+                    />
+                  </div>
+                ))}
               </div>
-              <div style={{ animation: 'slideIn 0.6s ease-out 0.6s both' }}>
-                <Skills 
-                  skillsTitle={t.skillsTitle}
-                  softSkillsTitle={t.softSkillsTitle}
-                  skills={{
-                    technical: t.technicalSkills,
-                    soft: t.softSkills
-                  }}
-                />
-              </div>
-              <div style={{ animation: 'slideIn 0.6s ease-out 0.8s both' }}>
-                <Projects 
-                  title={t.projectsTitle}
-                  projects={t.projects}
-                />
-              </div>
-            </div>
+            )}
+
+            {/* МОБИЛЬНАЯ версия - сначала все блоки, потом весь опыт */}
+            {isMobile && (
+              <>
+                {/* О себе */}
+                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.2s both' }}>
+                  <About 
+                    title={t.aboutTitle}
+                    about={t.aboutText}
+                  />
+                </div>
+
+                {/* Контакты */}
+                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.3s both' }}>
+                  <Contacts 
+                    title={t.contactsTitle}
+                    contacts={{
+                      email: t.email,
+                      phone: t.phone,
+                      location: t.location,
+                      github: t.github,
+                      telegram: t.telegram
+                    }}
+                  />
+                </div>
+
+                {/* Навыки */}
+                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}>
+                  <Skills 
+                    skillsTitle={t.skillsTitle}
+                    softSkillsTitle={t.softSkillsTitle}
+                    skills={{
+                      technical: t.technicalSkills,
+                      soft: t.softSkills
+                    }}
+                  />
+                </div>
+
+                {/* Образование */}
+                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.5s both' }}>
+                  <Education 
+                    title={t.educationTitle}
+                    education={t.education}
+                  />
+                </div>
+
+                {/* ВЕСЬ ОПЫТ РАБОТЫ ВНИЗУ */}
+                {/* Заголовок опыта */}
+                <div style={{ animation: 'fadeInUp 0.6s ease-out 0.6s both' }}>
+                  <Experience 
+                    title={t.experienceTitle}
+                    experience={firstExperiences}
+                  />
+                </div>
+
+                {/* Остальные работы */}
+                {remainingExperiences.map((job, index) => (
+                  <div key={`mobile-${index}`} style={{ 
+                    animation: `fadeInUp 0.6s ease-out ${0.7 + index * 0.1}s both`
+                  }}>
+                    <Experience 
+                      title=""
+                      experience={[job]}
+                    />
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>

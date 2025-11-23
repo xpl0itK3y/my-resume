@@ -4,7 +4,7 @@ import GlassBlock from '../GlassBlock';
 const Header = ({ name, title }) => {
   return (
         <div style={{ 
-            marginBottom: '2rem'
+            marginBottom: '1.5rem'
         }}>
             <GlassBlock delay={0}>
                 <div style={{ 
@@ -12,7 +12,7 @@ const Header = ({ name, title }) => {
                     animation: 'titleEntrance 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both'
                 }}>
                     <h1 style={{ 
-                        fontSize: '3.5rem', 
+                        fontSize: '3.0rem', 
                         margin: '0 0 0.5rem 0', 
                         color: '#fff',
                         fontWeight: '800',
@@ -37,3 +37,4 @@ const Header = ({ name, title }) => {
 };
 
 export default Header;
+

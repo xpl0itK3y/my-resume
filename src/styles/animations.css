@@ -1,4 +1,4 @@
-/* Анимация появления блоков с разными эффектами */
+/* Базовые анимации */
 @keyframes slideIn {
     from {
       opacity: 0;
@@ -10,7 +10,6 @@
     }
 }
 
-/* Анимация для шапки */
 @keyframes slideDownTop {
     from {
         opacity: 0;
@@ -22,7 +21,6 @@
     }
 }
 
-/* Анимация для имени - масштабирование с появлением */
 @keyframes fadeInScale {
     0% {
         opacity: 0;
@@ -37,7 +35,6 @@
     }
 }
 
-/* Анимация для должности - появление снизу */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -93,19 +90,18 @@
     }
 }
   
-/* Плавающая анимация */
 @keyframes float {
     0%, 100% { 
-        transform: translateY(0px); 
+        transform: translate(0px, 0px) scale(1); 
     }
-    50% { 
-        transform: translateY(-20px); 
+    33% { 
+        transform: translate(30px, -30px) scale(1.1); 
+    }
+    66% { 
+        transform: translate(-20px, 20px) scale(0.9); 
     }
 }
-  
-/* ... предыдущие анимации ... */
 
-/* Улучшенный переливающийся градиент */
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
@@ -124,21 +120,6 @@
     }
 }
 
-/* Плавающая анимация для сфер */
-@keyframes float {
-    0%, 100% { 
-        transform: translate(0px, 0px) scale(1); 
-    }
-    33% { 
-        transform: translate(30px, -30px) scale(1.1); 
-    }
-    66% { 
-        transform: translate(-20px, 20px) scale(0.9); 
-    }
-}
-
-/* ... остальные стили ... */
-/* Вращение */
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -148,7 +129,6 @@
     }
 }
 
-/* Пульсация для акцентных элементов */
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
@@ -160,7 +140,6 @@
     }
 }
 
-/* Волновой эффект */
 @keyframes wave {
     0%, 100% {
         transform: translateY(0) rotate(0deg);
@@ -173,12 +152,11 @@
     }
 }
 
-/* ЖИДКОЕ СТЕКЛО - главные стили */
+/* ЖИДКОЕ СТЕКЛО */
 .liquid-glass-block {
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
 }
 
 .liquid-glass-block:hover {
@@ -187,7 +165,6 @@
         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 
-/* Shimmer эффект для жидкого стекла */
 .liquid-glass-block::before {
     content: '';
     position: absolute;
@@ -212,13 +189,11 @@
     transform: rotate(45deg);
 }
 
-/* Плавное затухание границ */
 .liquid-highlight,
 .liquid-reflection {
     transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
   
-/* Анимация для заголовка */
 @keyframes titleEntrance {
     0% {
         opacity: 0;
@@ -230,7 +205,6 @@
     }
 }
 
-/* Анимация для выпадающего меню */
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -242,7 +216,6 @@
     }
 }
 
-/* Анимация для элементов меню */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -252,45 +225,107 @@
     }
 }
 
-/* Мобильная адаптация для анимаций */
+/* ОПТИМИЗАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
 @media (max-width: 768px) {
+    /* Упрощаем анимации на мобильных */
     @keyframes fadeInLeft {
         from {
             opacity: 0;
-            transform: translateX(0) translateY(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
-            transform: translateX(0) translateY(0);
+            transform: translateY(0);
         }
     }
 
     @keyframes fadeInRight {
         from {
             opacity: 0;
-            transform: translateX(0) translateY(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
-            transform: translateX(0) translateY(0);
+            transform: translateY(0);
         }
+    }
+
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Отключаем сложные анимации */
+    @keyframes float {
+        0%, 100% { 
+            transform: translate(0px, 0px); 
+        }
+    }
+
+    @keyframes gradientShift {
+        0%, 100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Упрощаем эффекты для жидкого стекла */
+    .liquid-glass-block {
+        will-change: auto;
     }
 
     .liquid-glass-block:hover {
         transform: translateY(-4px);
-    }
-}
-
-/* Отключение некоторых анимаций для очень маленьких экранов */
-@media (max-width: 480px) {
-    .liquid-glass-block:hover {
-        transform: translateY(-2px);
+        box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.4);
     }
     
     .liquid-glass-block::before {
         display: none;
     }
+
+    /* Отключаем анимации pulse и wave на мобильных */
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes wave {
+        0%, 100% {
+            transform: translateY(0);
+        }
+    }
 }
 
+/* Для очень маленьких экранов - минимум анимаций */
+@media (max-width: 480px) {
+    .liquid-glass-block:hover {
+        transform: none;
+    }
+    
+    /* Отключаем все декоративные анимации */
+    @keyframes float,
+    @keyframes pulse,
+    @keyframes wave,
+    @keyframes rotate {
+        0%, 100% {
+            transform: none;
+        }
+    }
+}
 
-
+/* Отключение анимаций для устройств с низкой производительностью */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

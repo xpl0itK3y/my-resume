@@ -3,9 +3,18 @@ import React, { useState } from 'react';
 const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    // Используем Flagpack CDN - качественные SVG флаги
     const languages = [
-        { code: 'ru', label: 'Русский', flag: '🇷🇺' },
-        { code: 'en', label: 'English', flag: '🇬🇧' }
+        { 
+            code: 'ru', 
+            label: 'Русский',
+            flag: 'https://flagcdn.com/ru.svg'
+        },
+        { 
+            code: 'en', 
+            label: 'English',
+            flag: 'https://flagcdn.com/us.svg'
+        }
     ];
 
     const currentLanguage = languages.find(lang => lang.code === currentLang);
@@ -21,14 +30,14 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
                     WebkitBackdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '15px',
-                    padding: '0.65rem 1.25rem',
+                    padding: '0.75rem 1.5rem',
                     color: '#fff',
-                    fontSize: '0.95rem',
+                    fontSize: '1rem',
                     fontWeight: '500',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem',
+                    gap: '0.75rem',
                     transition: 'all 0.3s ease',
                     boxShadow: isOpen 
                         ? '0 6px 20px rgba(102, 126, 234, 0.4)' 
@@ -48,7 +57,18 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
                     }
                 }}
             >
-                <span style={{ fontSize: '1.3rem' }}>{currentLanguage.flag}</span>
+                <img 
+                    src={currentLanguage.flag} 
+                    alt={currentLanguage.code}
+                    style={{
+                        width: '28px',
+                        height: '20px',
+                        objectFit: 'cover',
+                        borderRadius: '4px',
+                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)'
+                    }}
+                />
                 <span>{currentLanguage.code.toUpperCase()}</span>
                 <svg 
                     width="14" 
@@ -99,7 +119,7 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
                             overflow: 'hidden',
                             boxShadow: '0 8px 32px rgba(31, 38, 135, 0.37)',
                             animation: 'slideDown 0.3s ease-out',
-                            minWidth: '180px',
+                            minWidth: '200px',
                             zIndex: 999
                         }}
                     >
@@ -140,7 +160,18 @@ const LanguageSwitcher = ({ currentLang, onLanguageChange }) => {
                                     e.currentTarget.style.paddingLeft = '1.5rem';
                                 }}
                             >
-                                <span style={{ fontSize: '1.3rem' }}>{lang.flag}</span>
+                                <img 
+                                    src={lang.flag} 
+                                    alt={lang.code}
+                                    style={{
+                                        width: '28px',
+                                        height: '20px',
+                                        objectFit: 'cover',
+                                        borderRadius: '4px',
+                                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
+                                        border: '1px solid rgba(255, 255, 255, 0.2)'
+                                    }}
+                                />
                                 <span>{lang.label}</span>
                                 {currentLang === lang.code && (
                                     <span style={{ 

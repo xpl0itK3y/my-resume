@@ -7,33 +7,47 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
+        let ticking = false;
+        
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const currentScrollY = window.scrollY;
+                    const scrollDifference = currentScrollY - lastScrollY;
+                    
+                    const headerHeight = isMobile ? 220 : 300;
+                    const scrollThreshold = 5;
+                    
+                    if (currentScrollY <= headerHeight) {
+                        setIsVisible(true);
+                    }
+                    else if (scrollDifference > scrollThreshold && currentScrollY > headerHeight) {
+                        setIsVisible(false);
+                    }
+                    else if (scrollDifference < -scrollThreshold && currentScrollY <= headerHeight) {
+                        setIsVisible(true);
+                    }
+                    
+                    setLastScrollY(currentScrollY);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
         };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY < lastScrollY || currentScrollY < 30) {
-                setIsVisible(true);
-            } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                setIsVisible(false);
-            }
-            
-            setLastScrollY(currentScrollY);
-        };
-
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleResize);
         
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
         };
-    }, [lastScrollY]);
+    }, [lastScrollY, isMobile]);
+        
 
     return (
         <div style={{
@@ -43,8 +57,9 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
             right: 0,
             zIndex: 1000,
             transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
-            transition: 'transform 0.3s ease-in-out',
+            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             animation: 'slideDownTop 0.6s ease-out',
+            willChange: 'transform',
         }}>
             <div style={{
                 padding: isMobile ? '1rem 1rem' : '1.25rem 2rem',
@@ -66,27 +81,27 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
                 }}>
                     {/* Логотип/название слева */}
                     <div style={{
-                        fontSize: isMobile ? '1.2rem' : '2rem',
+                        fontSize: isMobile ? '1.4rem' : '2rem',
                         fontWeight: '700',
                         letterSpacing: '-0.5px',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.5rem'
+                        gap: isMobile ? '0.35rem' : '0.5rem'
                     }}>
                         <span style={{
-                            fontSize: isMobile ? '2rem' : '2.5rem',
+                            fontSize: isMobile ? '2.2rem' : '2.5rem',
                             background: 'linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
                         }}></span>
-                        {!isMobile && <span style={{
+                        <span style={{
                             color: '#ffffff',
                             textShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
                             background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent'
-                        }}>{translations.portfolio}</span>}
+                        }}>{translations.portfolio}</span>
                     </div>
 
                     {/* Переключатель языка справа */}

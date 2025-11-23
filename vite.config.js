@@ -5,4 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/my-resume/',
   plugins: [react()],
+  server: {
+    allowedHosts: [
+      '.ngrok-free.dev'
+    ]
+  }
 })

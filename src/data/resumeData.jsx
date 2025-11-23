@@ -7,11 +7,11 @@ const resumeData = {
     
     // Контактная информация
     contacts: {
-        email: "ivan.petrov@example.com",
-        phone: "+7 (999) 123-45-67",
+        email: "chiglinzev.vladimir@icloud.com",
+        phone: "+7 (707) 749-41-33",
         location: "Казахстан, Павлодар",
-        github: "github.com/ivanpetrov",
-        telegram: "@ivanpetrov"
+        github: "https://github.com/Modern-Messiah",
+        telegram: "@Inf1n1teVoid",
     },
     
     // О себе

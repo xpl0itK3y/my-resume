@@ -1,10 +1,10 @@
 const translations = {
     ru: {
         // TopBar
-        portfolio: "Portfolio",
+        portfolio: "Резюме",
         
         // Header
-        name: "Иван Петров",
+        name: "Владимир Николаевич",
         title: "Fullstack Developer",
         
         // About
@@ -13,26 +13,49 @@ const translations = {
         
         // Contacts
         contactsTitle: "📬 Контакты",
-        email: "ivan.petrov@example.com",
-        phone: "+7 (999) 123-45-67",
+        email: "chiglinzev.vladimir@icloud.com",
+        phone: "+7 (707) 749-41-33",
         location: "Казахстан, Павлодар",
-        github: "github.com/ivanpetrov",
-        telegram: "@ivanpetrov",
+        github: "github.com/Modern-Messiah",
+        telegram: "@Inf1n1teVoid",
         
         // Experience
         experienceTitle: "💼 Опыт работы",
         experiences: [
             {
-                position: "Senior Frontend Developer",
-                company: "Tech Company",
-                period: "2022 - настоящее время",
-                description: "Разработка и поддержка крупных веб-приложений на React. Оптимизация производительности, код-ревью, менторинг джунов."
+                position: "Fullstack-разработчик",
+                company: "Фриланс",
+                period: "Июль 2025 - настоящее время",
+                description: "Проектирование и разработка fullstack веб-приложений с интеграцией AI-сервисов и языковых моделей. Разработка Telegram-ботов различной сложности: от простых уведомлений до сложных диалоговых систем с AI-функционалом, обработкой команд, платёжными системами и автоматизацией бизнес-процессов. Реализация RESTful API на FastAPI с асинхронной архитектурой, JWT-аутентификацией, системами ролей и real-time обновлениями. Интеграция Telegram Bot API через aiogram и Telethon для создания интеллектуальных чат-ботов, автоответчиков и CRM-систем. Создание адаптивных пользовательских интерфейсов с использованием React, Vue и Vanilla JavaScript. Оптимизация производительности через многопоточность (asyncio, threading, ThreadPoolExecutor) для обработки высоких нагрузок. Проектирование баз данных (PostgreSQL, SQLite, MongoDB), реализация кэширования (Redis). Контейнеризация приложений с Docker/Docker Compose для быстрого развёртывания.",
+                technologies: ["Python", "FastAPI", "Aiogram", "Telethon", "JavaScript", "React", "Vue.js", "Docker", "Docker Compose", "PostgreSQL", "SQLite", "MongoDB", "Redis", "DeepSeek API", "Asyncio", "Threading", "JWT", "Git", "aiohttp", "Webhooks"]
             },
             {
-                position: "Frontend Developer",
-                company: "Startup Inc",
-                period: "2020 - 2022",
-                description: "Создание MVP продукта с нуля. Интеграция API, работа с UI/UX дизайнерами, внедрение CI/CD."
+                position: "Fullstack-разработчик",
+                company: "Фриланс: PrestigeFly",
+                period: "Декабрь 2024 - Июнь 2025",
+                description: "Разрабатывал и внедрял веб-решения для внутренних систем компании на основе бизнес-требований. Поддерживал и оптимизировал существующий код, повышая стабильность и производительность. Участвовал в проектировании архитектуры и интеграции с внешними сервисами. Проводил тестирование, отладку и рефакторинг кода. Сотрудничал с командой дизайнеров и менеджеров для реализации функционала в срок. Контакты: artemis@prestigefly․com",
+                technologies: ["React", "JavaScript", "Node.js"]
+            },
+            {
+                position: "Frontend-разработчик",
+                company: "Tele2 Kazakhstan",
+                period: "Февраль 2024 - Июнь 2024",
+                description: "Разработал веб-приложение для автоматизации учета продаж 20+ менеджеров. Внедрил систему аналитики с Pandas - руководство получило инструмент для принятия решений. Реализовал ролевую модель доступа (менеджер/администратор) с Django ORM. Создал дашборд для мониторинга выполнения планов с визуализацией. Внедрил контроль выполнения планов продаж с визуализацией данных Настроил контейнеризацию приложения с помощью Docker.",
+                technologies: ["Python", "Django", "SQLite", "Pandas", "Docker", "Linux", "HTML/CSS/JavaScript"]
+            },
+            {
+                position: "Fullstack PHP разработчик",
+                company: "Фриланс",
+                period: "Октябрь 2023 - Январь 2024",
+                description: "Разработал интернет-магазин на Laravel с использованием паттернов Repository, Service Layer. Реализовал каталог товаров с системой фильтрации и поиском. Интегрировал платежные системы и способы доставки. Создал личный кабинет пользователя и административную панель. Разработал систему управления заказами, скидок и промокодов. Настроил email-уведомления о статусе заказов. Реализовал систему авторизации и регистрации пользователей.",
+                technologies: ["PHP", "Laravel", "MySQL", "Docker"]
+            },
+            {
+                position: "1С-разработчик (1С:Предприятие 8.3)",
+                company: "Фриланс",
+                period: "Сентябрь 2023 - Декабрь 2023",
+                description: "Разработал системы автоматизации для книжного магазина на базе 1С:Предприятие 8.3 Реализовал полный цикл проведения продаж: оформление заказов, работа с клиентами, формирование документов. Разработал систему отчетов для анализа продаж, остатков, прибыльности. Создал ролевую модель доступа с разграничением прав (продавец, кассир, менеджер, администратор). Настроил учет товаров на складе с контролем остатков. Автоматизировал формирование первичных документов (накладные, акты, счета). Результат: убрали ручной учет в Excel, ускорили обработку заказов в 2-3 раза",
+                technologies: ["1С:Предприятие 8.3", "1С", "механизм ролей", "печатные формы"]
             }
         ],
         
@@ -40,9 +63,9 @@ const translations = {
         educationTitle: "🎓 Образование",
         education: [
             {
-                degree: "Бакалавр компьютерных наук",
-                institution: "МГУ",
-                period: "2016 - 2020"
+                degree: "Вычислительная техника и программное обеспечение",
+                institution: "Инновационный Евразийский Университет",
+                period: "2020 - 2024"
             }
         ],
         
@@ -88,7 +111,7 @@ const translations = {
             { name: "GitHub Actions", level: 75 },
             { name: "Pytest", level: 75 },
         ],
-        softSkills: ["Командная работа", "Agile/Scrum", "Английский (B2)", "Креативность"],
+        softSkills: ["Командная работа", "Agile/Scrum", "Английский (B2)", "Креативность", "Самоорганизация", "Быстрое обучение", "Решение проблем", "Внимание к деталям", "Техническая документация", "Аналитическое мышление"],
         
         // Projects
         projectsTitle: "🎨 Проекты",
@@ -108,11 +131,11 @@ const translations = {
     
     en: {
         // TopBar
-        portfolio: "Portfolio",
+        portfolio: "Resume",
         
         // Header
-        name: "Ivan Petrov",
-        title: "Fullstack Developer",
+        name: "Vladimir Nikolayevich",
+        title: "Full-stack Developer",
         
         // About
         aboutTitle: "👤 About Me",
@@ -120,26 +143,49 @@ const translations = {
         
         // Contacts
         contactsTitle: "📬 Contacts",
-        email: "ivan.petrov@example.com",
-        phone: "+7 (999) 123-45-67",
+        email: "chiglinzev.vladimir@icloud.com",
+        phone: "+7 (707) 749-41-33",
         location: "Kazakhstan, Pavlodar",
-        github: "github.com/ivanpetrov",
-        telegram: "@ivanpetrov",
+        github: "github.com/Modern-Messiah",
+        telegram: "@Inf1n1teVoid",
         
         // Experience
         experienceTitle: "💼 Work Experience",
         experiences: [
             {
-                position: "Senior Frontend Developer",
-                company: "Tech Company",
-                period: "2022 - Present",
-                description: "Development and maintenance of large React web applications. Performance optimization, code review, mentoring juniors."
+                position: "Full-stack developer",
+                company: "Freelance",
+                period: "July 2025 - present",
+                description: "Design and development of fullstack web applications with AI service and language model integration. Development of Telegram bots of varying complexity: from simple notifications to sophisticated conversational systems with AI functionality, command processing, payment systems, and business process automation. Implementation of RESTful APIs on FastAPI with asynchronous architecture, JWT authentication, role-based systems, and real-time updates. Integration of Telegram Bot API via aiogram and Telethon to create intelligent chatbots, auto-responders, and CRM systems. Creation of responsive user interfaces using React, Vue, and Vanilla JavaScript. Performance optimization through multithreading (asyncio, threading, ThreadPoolExecutor) for high-load processing. Database design (PostgreSQL, SQLite, MongoDB), caching implementation (Redis). Application containerization with Docker/Docker Compose for rapid deployment.",
+                technologies: ["Python", "FastAPI", "Aiogram", "Telethon", "JavaScript", "React", "Vue.js", "Docker", "Docker Compose", "PostgreSQL", "SQLite", "MongoDB", "Redis", "DeepSeek API", "Asyncio", "Threading", "JWT", "Git", "aiohttp", "Webhooks"]
             },
             {
-                position: "Frontend Developer",
-                company: "Startup Inc",
-                period: "2020 - 2022",
-                description: "Creating an MVP product from scratch. API integration, working with UI/UX designers, implementing CI/CD."
+                position: "Full-stack developer",
+                company: "Freelance: PrestigeFly",
+                period: "December 2024 - June 2025",
+                description: "Developed and implemented web solutions for internal company systems based on business requirements. Maintained and optimized existing codebase, improving stability and performance. Participated in architecture design and integration with external services. Conducted testing, debugging, and code refactoring. Collaborated with design and management teams to deliver functionality on schedule. Contact: artemis@prestigefly.com",
+                technologies: ["React", "JavaScript", "Node.js"]
+            },
+            {
+                position: "Front-end developer",
+                company: "Tele2 Kazakhstan",
+                period: "February 2024 - June 2024",
+                description: "Developed a web application to automate sales tracking for 20+ managers. Implemented an analytics system with Pandas - providing management with a decision-making tool. Built a role-based access model (manager/administrator) using Django ORM. Created a dashboard for monitoring sales plan completion with data visualization. Set up application containerization using Docker.",
+                technologies: ["Python", "Django", "SQLite", "Pandas", "Docker", "Linux", "HTML/CSS/JavaScript"]
+            },
+            {
+                position: "Full-stack PHP developer",
+                company: "Freelance",
+                period: "October 2023 - January 2024",
+                description: "Developed an e-commerce platform on Laravel using Repository and Service Layer patterns. Implemented product catalog with filtering system and search functionality. Integrated payment systems and delivery methods. Created user personal cabinet and administrative panel. Developed order management system, discounts, and promo codes. Set up email notifications for order status updates. Implemented user authentication and registration system.",
+                technologies: ["PHP", "Laravel", "MySQL", "Docker"]
+            },
+            {
+                position: "1C Developer (1C:Enterprise 8.3)",
+                company: "Freelance",
+                period: "September 2023 - December 2023",
+                description: "Developed automation systems for a bookstore based on 1C:Enterprise 8.3. Implemented a complete sales cycle: order processing, customer management, document generation. Built a reporting system for analyzing sales, inventory, and profitability. Created a role-based access model with permission differentiation (salesperson, cashier, manager, administrator). Set up inventory tracking with stock control. Automated generation of primary documents (delivery notes, acts, invoices). Result: eliminated manual Excel tracking, accelerated order processing by 2-3x.",
+                technologies: ["1C:Enterprise 8.3", "1С", "role mechanism", "printing forms"]
             }
         ],
         
@@ -147,9 +193,9 @@ const translations = {
         educationTitle: "🎓 Education",
         education: [
             {
-                degree: "Bachelor of Computer Science",
-                institution: "MSU",
-                period: "2016 - 2020"
+                degree: "Computer Engineering and Software",
+                institution: "Innovative University of Eurasia",
+                period: "2020 - 2024"
             }
         ],
         
@@ -196,7 +242,7 @@ const translations = {
             { name: "GitHub Actions", level: 75 },
             { name: "Pytest", level: 75 },
         ],
-        softSkills: ["Teamwork", "Agile/Scrum", "English (B2)", "Creativity"],
+        softSkills: ["Team Collaboration", "Agile/Scrum", "English (B2)", "Creativity", "Self-Organization", "Fast Learning", "Problem Solving", "Attention to Detail", "Technical Documentation", "Analytical Thinking"],
         
         // Projects
         projectsTitle: "🎨 Projects",
