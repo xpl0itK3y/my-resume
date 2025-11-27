@@ -165,25 +165,25 @@ const translations = {
                 technologies: ["React", "JavaScript", "Node.js"]
             },
             {
-                position: "Front-end developer",
-                company: "Tele2 Kazakhstan",
+                position: "Frontend Developer",
+                company: "Youth Affairs Committee of INEU",
                 period: "February 2024 - June 2024",
-                description: "Developed a web application to automate sales tracking for 20+ managers. Implemented an analytics system with Pandas - providing management with a decision-making tool. Built a role-based access model (manager/administrator) using Django ORM. Created a dashboard for monitoring sales plan completion with data visualization. Set up application containerization using Docker.",
-                technologies: ["Python", "Django", "SQLite", "Pandas", "Docker", "Linux", "HTML/CSS/JavaScript"]
+                description: "Developed a web platform for university youth clubs - a mini social network for students. Implemented a club system with membership joining and participant management. Created group chat functionality for real-time communication within clubs. Built a news feed for publishing events and announcements from clubs. Implemented role-based access control (member/club moderator/administrator) using Django ORM. Created user profiles displaying clubs and activity. Set up notification system for new messages and events. Deployed the application using Docker for simplified deployment",
+                technologies: ["Python", "Django", "SQLite", "WebSockets/Django Channels", "Docker", "HTML/CSS/JavaScript", "Bootstrap"]
             },
             {
-                position: "Full-stack PHP developer",
+                position: "Fullstack PHP Developer",
                 company: "Freelance",
                 period: "October 2023 - January 2024",
-                description: "Developed an e-commerce platform on Laravel using Repository and Service Layer patterns. Implemented product catalog with filtering system and search functionality. Integrated payment systems and delivery methods. Created user personal cabinet and administrative panel. Developed order management system, discounts, and promo codes. Set up email notifications for order status updates. Implemented user authentication and registration system.",
-                technologies: ["PHP", "Laravel", "MySQL", "Docker"]
+                description: "Developed an e-commerce store on Laravel using Repository and Service Layer architectural patterns. Implemented product catalog with filtering, search, and pagination. Created user dashboard with order history and admin panel for product management. Developed discount system, promo codes, and loyalty program with points rewards for purchases. Set up automated email notifications for order status updates via Laravel Mail. Implemented authentication and registration with email verification",
+                technologies: ["PHP", "Laravel", "MySQL", "Docker", "Repository Pattern", "Service Layer", "Laravel Mail", "Authentication"]
             },
             {
                 position: "1C Developer (1C:Enterprise 8.3)",
                 company: "Freelance",
                 period: "September 2023 - December 2023",
-                description: "Developed automation systems for a bookstore based on 1C:Enterprise 8.3. Implemented a complete sales cycle: order processing, customer management, document generation. Built a reporting system for analyzing sales, inventory, and profitability. Created a role-based access model with permission differentiation (salesperson, cashier, manager, administrator). Set up inventory tracking with stock control. Automated generation of primary documents (delivery notes, acts, invoices). Result: eliminated manual Excel tracking, accelerated order processing by 2-3x.",
-                technologies: ["1C:Enterprise 8.3", "1С", "role mechanism", "printing forms"]
+                description: "Developed an automation system for a bookstore on 1C:Enterprise platform. Implemented sales functionality: order processing, customer management, document printing (invoices, bills). Created reports for sales and inventory stock levels. Configured role-based access control for different roles (salesperson, cashier, manager, administrator). Implemented inventory management with stock control. Result: migrated from Excel to an automated system, accelerated order processing by 2-3 times",
+                technologies: ["1C:Enterprise 8.3", "1C Built-in Language", "Role Mechanism", "Print Forms", "Reports"]
             }
         ],
 
