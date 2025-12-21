@@ -9,5 +9,6 @@ export default defineConfig({
     allowedHosts: [
       '.ngrok-free.dev'
     ]
-  }
+  },
+  publicDir: 'public'
 })

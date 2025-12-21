@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
+import { generateResumePDF } from '../utils/generatePDF';
 
 const TopBar = ({ currentLang, onLanguageChange, translations }) => {
     const [isVisible, setIsVisible] = useState(true);
@@ -47,7 +48,17 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
             window.removeEventListener('resize', handleResize);
         };
     }, [lastScrollY, isMobile]);
-        
+
+    const handleDownloadResume = async () => {
+        try {
+            await generateResumePDF(translations, currentLang);
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            alert(currentLang === 'ru' 
+                ? 'Ошибка при генерации PDF. Пожалуйста, попробуйте еще раз.' 
+                : 'Error generating PDF. Please try again.');
+        }
+    };
 
     return (
         <div style={{
@@ -77,7 +88,8 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
                     margin: '0 auto',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    gap: '1rem'
                 }}>
                     {/* Логотип/название слева */}
                     <div style={{
@@ -104,11 +116,68 @@ const TopBar = ({ currentLang, onLanguageChange, translations }) => {
                         }}>{translations.portfolio}</span>
                     </div>
 
-                    {/* Переключатель языка справа */}
-                    <LanguageSwitcher 
-                        currentLang={currentLang} 
-                        onLanguageChange={onLanguageChange}
-                    />
+                    {/* Правая часть - кнопка скачивания и переключатель языка */}
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: isMobile ? '0.75rem' : '1rem'
+                    }}>
+                        {/* Кнопка скачивания резюме */}
+                        <button
+                            onClick={handleDownloadResume}
+                            style={{
+                                background: 'rgba(59, 130, 246, 0.2)',
+                                backdropFilter: 'blur(10px)',
+                                WebkitBackdropFilter: 'blur(10px)',
+                                border: '1px solid rgba(59, 130, 246, 0.4)',
+                                borderRadius: '15px',
+                                padding: isMobile ? '0.65rem 1rem' : '0.75rem 1.5rem',
+                                color: '#fff',
+                                fontSize: isMobile ? '0.85rem' : '0.95rem',
+                                fontWeight: '500',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                transition: 'all 0.3s ease',
+                                boxShadow: '0 4px 16px rgba(59, 130, 246, 0.2)',
+                                whiteSpace: 'nowrap'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)';
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                                e.currentTarget.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)';
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = '0 4px 16px rgba(59, 130, 246, 0.2)';
+                            }}
+                            title={translations.downloadResume}
+                        >
+                            <svg 
+                                width="18" 
+                                height="18" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                strokeWidth="2"
+                                strokeLinecap="round" 
+                                strokeLinejoin="round"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            {!isMobile && <span>{translations.downloadResume}</span>}
+                        </button>
+
+                        {/* Переключатель языка */}
+                        <LanguageSwitcher 
+                            currentLang={currentLang} 
+                            onLanguageChange={onLanguageChange}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
