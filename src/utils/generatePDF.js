@@ -447,6 +447,6 @@ export const generateResumePDF = async (translations, lang) => {
   };
 
   // Генерируем и скачиваем PDF
-  const fileName = `Resume_${translations.name.replace(/\s+/g, "_")}_${lang === "ru" ? "RU" : "EN"}.pdf`;
+  const fileName = `CV_${translations.name.replace(/\s+/g, "_")}_${lang === "ru" ? "RU" : "EN"}.pdf`;
   pdfMake.createPdf(docDefinition).download(fileName);
 };
