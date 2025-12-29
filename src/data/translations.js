@@ -16,9 +16,12 @@ const translations = {
     // Contacts
     contactsTitle: "📬 Контакты",
     email: "latundenis55@gmail.com",
+    // phone: "номер",
     location: "Казахстан, Павлодар",
     github: "github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
+    linkedin: "linkedin.com",
+    headhunter: "hh.kz",
 
     // Experience
     experienceTitle: "💼 Опыт работы",
@@ -208,9 +211,12 @@ const translations = {
     // Contacts
     contactsTitle: "📬 Contacts",
     email: "latundenis55@gmail.com",
+    // phone: "номер",
     location: "Kazakhstan, Pavlodar",
     github: "github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
+    linkedin: "linkedin.com",
+    headhunter: "hh.kz",
 
     // Experience
     experienceTitle: "💼 Work Experience",

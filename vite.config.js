@@ -1,14 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/my-resume/',
+  base: "/CV/",
   plugins: [react()],
   server: {
-    allowedHosts: [
-      '.ngrok-free.dev'
-    ]
+    allowedHosts: [".ngrok-free.dev"],
   },
-  publicDir: 'public'
-})
+  publicDir: "public",
+});
