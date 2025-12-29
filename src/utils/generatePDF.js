@@ -271,7 +271,11 @@ export const generateResumePDF = async (translations, lang) => {
                     bold: true,
                     color: "#1e40af",
                   },
-                  { text: translations.github, style: "contactText" },
+                  {
+                    text: translations.github.replace(/github\.com\//, ''),
+                    style: "contactText",
+                    link: `https://${translations.github}`,
+                  },
                 ],
               },
               {
@@ -282,9 +286,51 @@ export const generateResumePDF = async (translations, lang) => {
                     bold: true,
                     color: "#1e40af",
                   },
-                  { text: translations.telegram, style: "contactText" },
+                  {
+                    text: translations.telegram,
+                    style: "contactText",
+                    link: `https://t.me/${translations.telegram.replace("@", "")}`,
+                  },
                 ],
               },
+              ...(translations.linkedin
+                ? [
+                    {
+                      text: [
+                        {
+                          text: "LinkedIn: ",
+                          fontSize: 11,
+                          bold: true,
+                          color: "#1e40af",
+                        },
+                        {
+                          text: translations.linkedin.replace(/linkedin\.com\/in\//, '').replace(/linkedin\.com\//, ''),
+                          style: "contactText",
+                          link: `https://${translations.linkedin}`,
+                        },
+                      ],
+                    },
+                  ]
+                : []),
+              ...(translations.headhunter
+                ? [
+                    {
+                      text: [
+                        {
+                          text: "HeadHunter: ",
+                          fontSize: 11,
+                          bold: true,
+                          color: "#1e40af",
+                        },
+                        {
+                          text: "hh.kz",
+                          style: "contactText",
+                          link: `https://${translations.headhunter}`,
+                        },
+                      ],
+                    },
+                  ]
+                : []),
             ],
           },
         ],

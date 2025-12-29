@@ -21,7 +21,7 @@ const translations = {
     github: "github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
     linkedin: "linkedin.com",
-    headhunter: "hh.kz",
+    headhunter: "pavlodar.hh.kz/resume/0338ebe5ff0f1d55450039ed1f52566f696257",
 
     // Experience
     experienceTitle: "💼 Опыт работы",
@@ -216,7 +216,7 @@ const translations = {
     github: "github.com/xpl0itK3y",
     telegram: "@xpl0itK3y",
     linkedin: "linkedin.com",
-    headhunter: "hh.kz",
+    headhunter: "pavlodar.hh.kz/resume/0338ebe5ff0f1d55450039ed1f52566f696257",
 
     // Experience
     experienceTitle: "💼 Work Experience",
